@@ -3,16 +3,20 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-ingress
   annotations:
-{{ toYaml .Values.ingress.annotations | indent 4 }}
+    {{- with (index .Values.routes 0).ingress.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   rules:
-    - host: {{ .Values.host }}
+    {{- range .Values.routes }}
+    - host: {{ .host }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.service.name }}
+                name: {{ .service.name }}
                 port:
-                  number: {{ .Values.service.port }}
+                  number: {{ .service.port }}
+    {{- end }}
