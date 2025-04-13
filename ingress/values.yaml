@@ -1,0 +1,9 @@
+host: nodejs-app.local
+
+service:
+  name: nodejs-app
+  port: 3000
+
+ingress:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /

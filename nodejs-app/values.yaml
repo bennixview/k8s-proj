@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  repository: nodejs-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+resources: {}
+
+nodeSelector: {}
+tolerations: []
+affinity: []
+
+serviceAccount:
+  create: false
+
+autoscaling:
+  enabled: false
