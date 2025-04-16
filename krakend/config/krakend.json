@@ -25,6 +25,58 @@
           "method": "GET"
         }
       ]
+    },
+    {
+      "endpoint": "/ui",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "no-op",
+          "host": ["http://remix-ui:3000"],
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "endpoint": "/ui/{path}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/{path}",
+          "encoding": "no-op",
+          "host": ["http://remix-ui:3000"],
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "endpoint": "/build/{path}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/build/{path}",
+          "encoding": "no-op",
+          "host": ["http://remix-ui:3000"],
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "endpoint": "/resources/{path}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/resources/{path}",
+          "encoding": "no-op",
+          "host": ["http://remix-ui:3000"],
+          "method": "GET"
+        }
+      ]
     }
   ]
 }

@@ -4,8 +4,8 @@ import type { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Remix Hello App" },
+    { name: "description", content: "A simple hello app using Remix and Krakend" },
   ];
 };
 
@@ -16,12 +16,13 @@ export async function action({ request }: ActionFunctionArgs) {
     return json({ error: "Name is required" });
   }
   try {
-    // Use the Krakend API endpoint exposed via ingress or port-forward
-    const res = await fetch("http://krakend.local/hello?name=" + encodeURIComponent(name));
+    // Using relative path to ensure it works through the gateway
+    const res = await fetch(`/hello?name=${encodeURIComponent(name)}`);
     const data = await res.json();
     return json({ message: data.message });
   } catch (e) {
-    return json({ error: "Failed to fetch from API!" });
+    console.error("Error fetching from API:", e);
+    return json({ error: "Failed to fetch from API" });
   }
 }
 
