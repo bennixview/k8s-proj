@@ -21,7 +21,7 @@ export async function action({ request }: ActionFunctionArgs) {
     const data = await res.json();
     return json({ message: data.message });
   } catch (e) {
-    return json({ error: "Failed to fetch from API" });
+    return json({ error: "Failed to fetch from API!" });
   }
 }
 
