@@ -9,7 +9,7 @@
         "output_encoding": "json",
         "backend": [
           {
-            "url_pattern": "/",
+            "url_pattern": "/hello",
             "host": ["http://nodejs-app.default.svc.cluster.local:3000"]
           }
         ]

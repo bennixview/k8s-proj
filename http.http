@@ -1,0 +1,11 @@
+ GET http://nodejs-app.local
+GET http://nodejs-app.local/hello?name=John
+
+GET http://nodejs-app.local/hello
+
+GET http://krakend.local
+
+GET http://krakend.local/hello?name=John
+GET http://krakend.local/hello
+
+

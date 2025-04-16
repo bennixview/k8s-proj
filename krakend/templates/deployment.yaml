@@ -16,4 +16,12 @@ spec:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: {{ .Values.service.port }}
+        - name: http
+          containerPort: {{ .Values.service.port }}
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/krakend
+      volumes:
+      - name: config-volume
+        configMap:
+          name: {{ .Chart.Name }}-config
