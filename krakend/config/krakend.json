@@ -1,18 +1,22 @@
 {
-    "version": 3,
-    "name": "krakend",
-    "port": 8080,
-    "endpoints": [
-      {
-        "endpoint": "/hello",
-        "method": "GET",
-        "output_encoding": "json",
-        "backend": [
-          {
-            "url_pattern": "/hello",
-            "host": ["http://nodejs-app.default.svc.cluster.local:3000"]
-          }
-        ]
-      }
-    ]
-  }
+  "version": 3,
+  "name": "KrakenD API Gateway",
+  "port": 8080,
+  "cache_ttl": "3600s",
+  "timeout": "3s",
+  "endpoints": [
+    {
+      "endpoint": "/hello",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/hello",
+          "encoding": "json",
+          "host": ["http://nodejs-app:3000"],
+          "method": "GET"
+        }
+      ]
+    }
+  ]
+}
